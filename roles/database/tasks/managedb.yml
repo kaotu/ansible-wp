@@ -1,0 +1,17 @@
+---
+- name: Install pip
+  yum:
+    name: python-pip
+    state: installed
+
+- name: Install The PyMySQL
+  pip:
+    name: PyMySQL
+
+- name: Create schema
+  mysql_db:
+    login_host: "{{ login_user }}"
+    login_user: "{{ login_user }}"
+    login_password: "{{ login_password }}"
+    name: wordpress
+    state: present
